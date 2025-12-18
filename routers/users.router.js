@@ -2,6 +2,7 @@
 import { Router } from "express"
 import { IO, searchInData } from "../utils/fileUtils.js";
 import { findStoredUser } from "../utils/userUtils.js";
+import { checkUsernameAndPassword } from "../utils/authUtils.js";
 
 export const userRouter = Router()
 
@@ -9,6 +10,7 @@ userRouter.post("/register", async (req, res) => {
     if (!await checkUsernameAndPassword(res, req.body)) {
         return
     }
+    const { username, password } = req.body
     console.log(`checking username uniquness`);
     const isUserExists = await searchInData("../data/users.json", "username", username)
     if (isUserExists) {
