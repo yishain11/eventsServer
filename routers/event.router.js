@@ -1,6 +1,6 @@
 
 import { Router } from "express"
-import { IO, searchInData } from "../utils/fileUtils.js";
+import { IO } from "../utils/fileUtils.js";
 import { checkUsernameAndPassword } from "../utils/authUtils.js";
 
 export const eventRouter = Router()
