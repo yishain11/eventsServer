@@ -21,7 +21,7 @@ eventRouter.post("/events", async (req, res) => {
         return
     }
     const storedEvents = await IO("../data/events.json")
-    storedEvents.push({ eventName, ticketsForSale, username: req.body.username })
+    storedEvents.push({ eventName, ticketsAvailable: ticketsForSale, createdBy: req.body.username })
     const storeRes = await IO("../data/events.json", storedEvents, "write")
     if (storeRes === false) {
         console.log(`problem with saving event`);

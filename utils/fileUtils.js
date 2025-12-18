@@ -26,7 +26,7 @@ export async function searchInData(path, field, keyword) {
         return false
     }
     for (const dataObj of storedData) {
-        if (dataObj[field] === keyword) {
+        if (dataObj[field].toLowerCase() === keyword.toLowerCase()) {
             console.log(`found value for keyword: ${keyword}`);
             return dataObj
         }

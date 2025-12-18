@@ -27,9 +27,9 @@ ticketsRouter.post("/tickets/buy", async (req, res) => {
         res.status(404).end(`event name: ${eventName} not found`)
         return
     }
-    if (storedEvent.ticketsForSale - parseInt(quantity) <= 0) {
-        console.log(`not enough tickets to buy: ${storedEvent.ticketsForSale} in event ${eventName}`);
-        res.status(500).end(`not enough tickets to buy: ${storedEvent.ticketsForSale} in event ${eventName}`)
+    if (storedEvent.ticketsAvailable - parseInt(quantity) <= 0) {
+        console.log(`not enough tickets to buy: ${storedEvent.ticketsAvailable} in event ${eventName}`);
+        res.status(500).end(`not enough tickets to buy: ${storedEvent.ticketsAvailable} in event ${eventName}`)
         return
     }
     // create a recite
